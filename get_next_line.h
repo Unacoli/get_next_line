@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/02/26 16:15:17 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/04/19 17:41:32 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 2
+# define BUFFER_SIZE_2
 # endif
 
 void	*ft_memmove(void *dst, const void *src, size_t n);
