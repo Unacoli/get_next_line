@@ -6,41 +6,13 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 15:29:15 by nargouse          #+#    #+#             */
-/*   Updated: 2021/02/26 16:15:20 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/12 18:02:01 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
-{
-	size_t	i;
-
-	if (!dst && !src)
-		return (NULL);
-	if (src == dst)
-		return (dst);
-	if (dst > src)
-	{
-		while (n > 0)
-		{
-			((unsigned char *)dst)[n - 1] = ((unsigned char *)src)[n - 1];
-			n--;
-		}
-	}
-	else
-	{
-		i = 0;
-		while (i < n)
-		{
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
-	return (dst);
-}
-
-int	ft_strlen(char const *str)
+size_t	ft_strlen(char const *str)
 {
 	int	i;
 
@@ -50,23 +22,90 @@ int	ft_strlen(char const *str)
 	return (i);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	int i;
+
+	i = 0;
+	if (c == 0)
+	{
+		while (s[i])
+			i++;
+		return ((char *)s + i);
+	}
+	while (s[i])
+	{
+		if (s[i] == c)
+			return ((char *)s + i);
+		i++;
+	}
+	return (0);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
-	size_t	total_length;
-	size_t	size_s1;
-	size_t	size_s2;
+	int		total_length;
+	int		i;
+	int		j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	size_s1 = ft_strlen((char *)s1);
-	size_s2 = ft_strlen((char *)s2);	
-	total_length = size_s1 + size_s2;
+	total_length = ft_strlen(s1) + ft_strlen(s2);
+	i = 0;
+	j = 0;
 	if (!(result = (char *)malloc(sizeof(char *) * (total_length + 1))))
 		return (NULL);
-	ft_memmove(result, s1, size_s1);
-	ft_memmove(result + size_s1, s2, size_s2);
-	result[total_length - 1] = '\0';
-	free((char *)s1);
+	while (i < total_length)
+	{
+		while (s1[j])
+		{
+			result[i] = s1[j];
+			i++;
+			j++;
+		}
+		j = 0;
+		while (s2[j])
+		{
+			result[i] = s2[j];
+			i++;
+			j++;
+		}
+	}	
+	result[i] = '\0';
+	return (result);
+}
+
+char	*ft_strnjoin(char const *s1, char const *s2, size_t n)
+{
+	char	*result;
+	int		total_length;
+	int		i;
+	int		j;
+
+	if (!s1 || !s2)
+		return (NULL);
+	total_length = ft_strlen(s1) + ft_strlen(s2);
+	i = 0;
+	j = 0;
+	if (!(result = (char *)malloc(sizeof(char *) * (total_length + 1))))
+		return (NULL);
+	while (i < total_length)
+	{
+		while (s1[j])
+		{
+			result[i] = s1[j];
+			i++;
+			j++;
+		}
+		j = 0;
+		while (s2[j] && j < n)
+		{
+			result[i] = s2[j];
+			i++;
+			j++;
+		}
+	}	
+	result[i] = '\0';
 	return (result);
 }

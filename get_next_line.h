@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/04/19 17:41:32 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:47:37 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE_2
+# define BUFFER_SIZE 2
 # endif
 
 void	*ft_memmove(void *dst, const void *src, size_t n);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-int		ft_return(char *str);
+char	*ft_strnjoin(char const *s1, char const *s2, size_t n);
+char	*ft_strchr(char const *str, int c);
 int		get_next_line(int fd, char **line);
 
 #endif
