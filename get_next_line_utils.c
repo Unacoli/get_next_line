@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 15:29:15 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/12 22:43:18 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/12 23:11:20 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ char	*ft_strnjoin_free(char const *s1, char const *s2, size_t n)
 		j++;
 	}
 	result[i] = '\0';
-	//free((char *)s1);
+	free((char *)s1);
 	return (result);
 }
