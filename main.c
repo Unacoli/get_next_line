@@ -2,10 +2,13 @@
 
 int main()
 {
-	printf("%s\n", ft_strnjoin("babar", "chocolat", 3));
-	printf("%s\n", ft_strjoin("babar", "chocolat"));
-	printf("%s\n", ft_strnjoin("babar", "ch", 42));
-	printf("%s\n", ft_strjoin("babar", "ch"));
-	printf("%s\n", ft_strnjoin("babar", "", 42));
-	printf("%s\n", ft_strjoin("babar", ""));
+	char *line;
+	int fd;
+	int gnl;
+
+	fd = open("./txt", O_RDONLY);
+	if (fd == -1)
+		return (42);
+	gnl = get_next_line(fd, &line);
+	printf("%d : %s\n", gnl, line);
 }	

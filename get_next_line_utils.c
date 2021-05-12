@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 15:29:15 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/12 18:02:01 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/12 21:35:24 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,70 +42,60 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_free(char const *s1, char const *s2)
 {
 	char	*result;
-	int		total_length;
 	int		i;
 	int		j;
 
-	if (!s1 || !s2)
+	if (!(result = (char *)malloc(sizeof(char *) * (ft_strlen(s1)
+		+ ft_strlen(s2) + 1))))
 		return (NULL);
-	total_length = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
 	j = 0;
-	if (!(result = (char *)malloc(sizeof(char *) * (total_length + 1))))
-		return (NULL);
-	while (i < total_length)
+	while (s1[j])
 	{
-		while (s1[j])
-		{
-			result[i] = s1[j];
-			i++;
-			j++;
-		}
-		j = 0;
-		while (s2[j])
-		{
-			result[i] = s2[j];
-			i++;
-			j++;
-		}
-	}	
+		result[i] = s1[j];
+		i++;
+		j++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		result[i] = s2[j];
+		i++;
+		j++;
+	}
 	result[i] = '\0';
+	free(s1);
 	return (result);
 }
 
-char	*ft_strnjoin(char const *s1, char const *s2, size_t n)
+char	*ft_strnjoin_free(char const *s1, char const *s2, size_t n)
 {
 	char	*result;
-	int		total_length;
 	int		i;
 	int		j;
 
-	if (!s1 || !s2)
+	if (!(result = (char *)malloc(sizeof(char *) * (ft_strlen(s1)
+		+ ft_strlen(s2) + 1))))
 		return (NULL);
-	total_length = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
 	j = 0;
-	if (!(result = (char *)malloc(sizeof(char *) * (total_length + 1))))
-		return (NULL);
-	while (i < total_length)
+	while (s1[j])
 	{
-		while (s1[j])
-		{
-			result[i] = s1[j];
-			i++;
-			j++;
-		}
-		j = 0;
-		while (s2[j] && j < n)
-		{
-			result[i] = s2[j];
-			i++;
-			j++;
-		}
-	}	
+		result[i] = s1[j];
+		i++;
+		j++;
+	}
+	j = 0;
+	while (s2[j] && j < (int)n)
+	{
+		result[i] = s2[j];
+		i++;
+		j++;
+	}
 	result[i] = '\0';
+	free(s1);
 	return (result);
 }
