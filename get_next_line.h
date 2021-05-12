@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/12 18:41:25 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/12 22:38:22 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 # define BUFFER_SIZE 2
 # endif
 
-void	*ft_memmove(void *dst, const void *src, size_t n);
 size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strnjoin(char const *s1, char const *s2, size_t n);
+char	*ft_strjoin_free(char const *s1, char const *s2);
+char	*ft_strnjoin_free(char const *s1, char const *s2, size_t n);
 char	*ft_strchr(char const *str, int c);
+int		ft_strichr(char const *str, int c);
 int		get_next_line(int fd, char **line);
 
 #endif

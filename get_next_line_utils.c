@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 15:29:15 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/12 21:35:24 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/12 22:43:18 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,26 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
+int		ft_strichr(const char *s, int c)
+{
+	int i;
+
+	i = 0;
+	if (c == 0)
+	{
+		while (s[i])
+			i++;
+		return (i);
+	}
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
 char	*ft_strjoin_free(char const *s1, char const *s2)
 {
 	char	*result;
@@ -67,7 +87,7 @@ char	*ft_strjoin_free(char const *s1, char const *s2)
 		j++;
 	}
 	result[i] = '\0';
-	free(s1);
+	//free((char *)s1);
 	return (result);
 }
 
@@ -96,6 +116,6 @@ char	*ft_strnjoin_free(char const *s1, char const *s2, size_t n)
 		j++;
 	}
 	result[i] = '\0';
-	free(s1);
+	//free((char *)s1);
 	return (result);
 }
