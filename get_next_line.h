@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 16:25:47 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 20:24:43 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 2
+#  define BUFFER_SIZE 2
+# endif
+
+# ifdef BUFFER_SIZE
+#  define BUFSIZE BUFFER_SIZE
 # endif
 
 size_t	ft_strlen(const char *str);

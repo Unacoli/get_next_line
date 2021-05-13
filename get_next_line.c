@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:06:35 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 17:58:37 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 20:26:52 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,30 @@ int	ft_free(void **ptr)
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*garbage = "";
-	char		buffer[BUFFER_SIZE + 1];
+	static char	*left = NULL;
+	char		buf[BUFSIZE + 1];
 	int			ret;
 	char		*tmp;
 
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
+	if (fd < 0 || line == NULL || BUFSIZE <= 0 || read(fd, NULL, 0) == -1)
 		return (-1);
-	printf("garbage: [%s] ichr: [%d]\n", garbage, ft_strichr(garbage, '\n'));
-	*line = ft_strndup(garbage, ft_strichr(garbage, '\n'));
-	if (ft_strchr(garbage, '\n') != NULL)
+	*line = ft_strndup(left ? left : "", ft_strichr(left ? left : "", '\n'));
+	if (ft_strchr(left ? left : "", '\n') != NULL)
 	{
-		tmp = garbage;
-		garbage = ft_strdup(ft_strchr(garbage, '\n') + 1);
+		tmp = left;
+		left = ft_strdup(ft_strchr(left ? left : "", '\n') + 1);
 		free(tmp);
 		return (1);
 	}
-	while (((ret = read(fd, &buffer, BUFFER_SIZE)) > 0) 
-			&& (ft_strchr(buffer, '\n') == NULL))
+	while (((ret = read(fd, &buf, BUFSIZE)) > 0) && ft_strchr(buf, '\n') == 0)
 	{
-		buffer[ret] = '\0';
-		*line = ft_strjoin_free(*line, buffer);
+		buf[ret] = '\0';
+		*line = ft_strjoin_free(*line, buf);
 	}
-	buffer[ret] = '\0';
-	*line = ft_strnjoin_free(*line, buffer, ft_strichr(buffer, '\n'));
-	if (ret != BUFFER_SIZE && ft_strchr(buffer, '\n') == NULL)
-		return (ft_free((void **) &garbage));
-	garbage = ft_strdup(ft_strchr(buffer, '\n') + 1);
+	buf[ret] = '\0';
+	*line = ft_strnjoin_free(*line, buf, ft_strichr(buf, '\n'));
+	if (ret != BUFSIZE && ft_strchr(buf, '\n') == NULL)
+		return (ft_free((void **)&left));
+	left = ft_strdup(ft_strchr(buf, '\n') + 1);
 	return (1);
 }
