@@ -23,4 +23,5 @@ int main()
 	if (gnl == -1)
 		printf("ta mere la pute\n");
 	close (fd);
+	system("leaks a.out");
 }	
