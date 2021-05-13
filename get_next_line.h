@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 20:24:43 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 21:31:25 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # endif
 
 size_t	ft_strlen(const char *str);
+int		ft_free(void **ptr);
+int		ft_if(char **left, char **tmp);
 char	*ft_strjoin_free(char const *s1, char const *s2);
 char	*ft_strnjoin_free(char const *s1, char const *s2, size_t n);
 char	*ft_strchr(char const *str, int c);
