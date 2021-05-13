@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:06:35 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 14:38:34 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 15:03:41 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	get_next_line(int fd, char **line)
 		buffer[ret] = '\0';
 		*line = ft_strjoin_free(*line, buffer);
 	}
-	printf("ret: %d\n", ret);
 	buffer[ret] = '\0';
-	printf("%s -> %d\n", buffer, ft_strichr(buffer, '\n')); 
 	*line = ft_strnjoin_free(*line, buffer, ft_strichr(buffer, '\n'));
-	if (ret != BUFFER_SIZE)
+	if (ret != BUFFER_SIZE && ft_strchr(buffer, '\n') == NULL)
+	{
+		free(garbage);
+		garbage = NULL;;
 		return (0);
-	printf("garbaj: %s\n", garbage);
-	printf("strcherche: %s\n", ft_strchr(buffer, '\n') + 1);
+	}
 	garbage = ft_strjoin_free(garbage, ft_strchr(buffer, '\n') + 1);
 	return (1);
 }
