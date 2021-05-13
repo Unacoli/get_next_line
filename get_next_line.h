@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 21:31:25 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 22:18:00 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
 # endif
 
-# ifdef BUFFER_SIZE
-#  define BUFSIZE BUFFER_SIZE
-# endif
+# define BUFSIZE BUFFER_SIZE
 
 size_t	ft_strlen(const char *str);
 int		ft_free(void **ptr);

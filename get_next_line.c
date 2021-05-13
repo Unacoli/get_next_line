@@ -6,19 +6,11 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:06:35 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 21:30:18 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 22:22:58 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int		ft_if(char **left, char **tmp)
-{
-	*tmp = *left;
-	*left = ft_strdup(ft_strchr(*left ? *left : "", '\n') + 1);
-	free(*tmp);
-	return (1);
-}
 
 int		get_next_line(int fd, char **line)
 {
@@ -44,6 +36,14 @@ int		get_next_line(int fd, char **line)
 	tmp = left;
 	left = ft_strdup(ft_strchr(buf, '\n') + 1);
 	free(tmp);
+	return (1);
+}
+
+int		ft_if(char **left, char **tmp)
+{
+	*tmp = *left;
+	*left = ft_strdup(ft_strchr(*left ? *left : "", '\n') + 1);
+	free(*tmp);
 	return (1);
 }
 
