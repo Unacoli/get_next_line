@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:06:35 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 14:01:56 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 14:38:34 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int	get_next_line(int fd, char **line)
 {
+	static char	*garbage = NULL;
 	char		buffer[BUFFER_SIZE + 1];
 	int			ret;
-	static char	*garbage = NULL;
 	
-	*line = malloc(1);
 	if (garbage == NULL)
 		garbage = malloc(1);
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
