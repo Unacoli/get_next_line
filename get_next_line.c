@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:06:35 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 15:03:41 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:48:58 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,20 @@ int	get_next_line(int fd, char **line)
 	int			ret;
 	
 	if (garbage == NULL)
+	{
 		garbage = malloc(1);
+		*garbage = '\0';
+	}
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
-	*line = ft_strdup(garbage);
+	//*line = ft_strdup(garbage);
+	printf("garbage: [%s] ichr: [%d]\n", garbage, ft_strichr(garbage, '\n'));
+	*line = ft_strndup(garbage, ft_strichr(garbage, '\n'));
+	if (ft_strchr(garbage, '\n') != NULL)
+	{
+		garbage = ft_strdup(ft_strchr(garbage, '\n') + 1);
+		return (1);
+	}
 	while (((ret = read(fd, &buffer, BUFFER_SIZE)) > 0) && (ft_strchr(buffer, '\n') == NULL))
 	{
 		buffer[ret] = '\0';
@@ -33,9 +43,9 @@ int	get_next_line(int fd, char **line)
 	if (ret != BUFFER_SIZE && ft_strchr(buffer, '\n') == NULL)
 	{
 		free(garbage);
-		garbage = NULL;;
+		garbage = NULL;
 		return (0);
 	}
-	garbage = ft_strjoin_free(garbage, ft_strchr(buffer, '\n') + 1);
+	garbage = ft_strdup(ft_strchr(buffer, '\n') + 1);
 	return (1);
 }

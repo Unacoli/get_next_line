@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:07:13 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 14:01:34 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:25:47 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*ft_strchr(char const *str, int c);
 int		ft_strichr(char const *str, int c);
 int		get_next_line(int fd, char **line);
 char	*ft_strdup(const char *src);
+char	*ft_strndup(const char *src, size_t n);
 
 #endif

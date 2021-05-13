@@ -6,7 +6,7 @@
 /*   By: nargouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 15:29:15 by nargouse          #+#    #+#             */
-/*   Updated: 2021/05/13 14:01:03 by nargouse         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:35:43 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,24 @@ char	*ft_strdup(const char *src)
 	if (ptr == 0)
 		return (NULL);
 	while (src[i])
+	{
+		ptr[i] = src[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
+char	*ft_strndup(const char *src, size_t n)
+{
+	char	*ptr;
+	size_t	i;
+
+	i = 0;
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (ptr == 0)
+		return (NULL);
+	while (src[i] && i < n)
 	{
 		ptr[i] = src[i];
 		i++;
@@ -77,7 +95,7 @@ int		ft_strichr(const char *s, int c)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 char	*ft_strjoin_free(char const *s1, char const *s2)
